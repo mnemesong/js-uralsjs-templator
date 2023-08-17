@@ -3,11 +3,9 @@ import * as assert from "assert"
 import { describe, it } from "mocha"
 import * as eq from "deep-equal"
 
-type DSL = index.tag.T<keyof typeof index.def.renderer>
-
 describe("test variative cases", () => {
     it("test 1", () => {
-        const given: DSL = index.tag.typecheck(['html', {},
+        const given = index.tag.typecheck(['html', {},
             ['div', {
                 'class': 'w-100',
                 'style': 'height: 50px;'
