@@ -29,7 +29,7 @@ var mocha_1 = require("mocha");
 var eq = __importStar(require("deep-equal"));
 (0, mocha_1.describe)("test variative cases", function () {
     (0, mocha_1.it)("test 1", function () {
-        var given = index.tag.typecheck(['html', {},
+        var given = index.typecheck(['html', {},
             ['div', {
                     'class': 'w-100',
                     'style': 'height: 50px;'
@@ -45,8 +45,8 @@ var eq = __importStar(require("deep-equal"));
                     }, "Submit"],
                 ['input'],
             ]
-        ], index.def.renderer);
-        var result = index.tag.render(given, index.def.renderer);
+        ], index.html.config);
+        var result = index.render(given, index.html.config);
         var nominal = '<html>'
             + '\n  <div class="w-100" style="height: 50px;">'
             + '\n    <input name="test-input" val="test-val">'

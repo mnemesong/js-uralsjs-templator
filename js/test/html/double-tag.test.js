@@ -23,6 +23,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.render = exports.record = void 0;
-exports.record = __importStar(require("./record"));
-exports.render = __importStar(require("./render"));
+var index = __importStar(require("../../src"));
+var assert = __importStar(require("assert"));
+var mocha_1 = require("mocha");
+(0, mocha_1.describe)("test double-tag", function () {
+    (0, mocha_1.it)("test 1", function () {
+        assert.strictEqual(Object.keys(index.html.doubleTag.config).length, 107);
+    });
+    (0, mocha_1.it)("test 2", function () {
+        assert.ok(Object.keys(index.html.doubleTag.config).includes("textarea"));
+    });
+});

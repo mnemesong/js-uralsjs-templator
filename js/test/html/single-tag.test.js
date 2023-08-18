@@ -23,30 +23,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.renderer = exports.literals = void 0;
-var a = __importStar(require("./abstracts"));
-exports.literals = [
-    '!DOCTYPE',
-    'area',
-    'base',
-    'br',
-    'col',
-    'command',
-    'embed',
-    'hr',
-    'img',
-    'input',
-    'keygen',
-    'link',
-    'meta',
-    'param',
-    'source',
-    'track',
-    'wbr',
-];
-exports.renderer = {};
-exports.literals.forEach(function (l) {
-    exports.renderer[l] = function (params, content) {
-        return "<".concat(l).concat(a.record.render(params), ">");
-    };
+var index = __importStar(require("../../src"));
+var assert = __importStar(require("assert"));
+var mocha_1 = require("mocha");
+(0, mocha_1.describe)("test single-tag", function () {
+    (0, mocha_1.it)("test 1", function () {
+        assert.strictEqual(Object.keys(index.html.singleTag.config).length, 17);
+    });
+    (0, mocha_1.it)("test 2", function () {
+        assert.ok(Object.keys(index.html.singleTag.config).includes("hr"));
+    });
 });

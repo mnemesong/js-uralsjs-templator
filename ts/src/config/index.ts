@@ -1,6 +1,4 @@
-import * as type from "superstruct"
-
-export const t = type.func()
+export * as record from "./record"
 
 export type T<Tag extends string> = Record<Tag, (
     params: Record<string, string|number>, 

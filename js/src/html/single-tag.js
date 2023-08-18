@@ -34,14 +34,32 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.render = exports.splash = exports.t = void 0;
-var type = __importStar(require("superstruct"));
-exports.t = type.record(type.string(), type.union([type.string(), type.number()]));
-var splash = function (t1, t2) { return (__assign(__assign({}, t1), t2)); };
-exports.splash = splash;
-var render = function (t) { return Object
-    .keys(t).map(function (k) { return ' ' + k + '="'
-    + (typeof t[k] === 'string' ? t[k] : t[k].toString())
-        .replace('"', '\\"') + '"'; })
-    .join(''); };
-exports.render = render;
+exports.config = exports.literals = void 0;
+var c = __importStar(require("../config"));
+exports.literals = [
+    '!DOCTYPE',
+    'area',
+    'base',
+    'br',
+    'col',
+    'command',
+    'embed',
+    'hr',
+    'img',
+    'input',
+    'keygen',
+    'link',
+    'meta',
+    'param',
+    'source',
+    'track',
+    'wbr',
+];
+var reducer = function (acc, el) {
+    var _a;
+    var a = function (params, content) {
+        return "<".concat(el).concat(c.record.render(params), ">");
+    };
+    return __assign(__assign({}, acc), (_a = {}, _a[el] = a, _a));
+};
+exports.config = exports.literals.reduce(reducer, {});

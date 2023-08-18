@@ -23,6 +23,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.t = void 0;
-var type = __importStar(require("superstruct"));
-exports.t = type.func();
+var index = __importStar(require("../../src"));
+var assert = __importStar(require("assert"));
+var mocha_1 = require("mocha");
+(0, mocha_1.describe)("test html", function () {
+    (0, mocha_1.it)("test 1", function () {
+        assert.ok(Object.keys(index.html.config).includes("hr"));
+    });
+    (0, mocha_1.it)("test 2", function () {
+        assert.ok(Object.keys(index.html.config).includes("textarea"));
+    });
+});

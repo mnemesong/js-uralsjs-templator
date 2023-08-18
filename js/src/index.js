@@ -23,7 +23,20 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.tag = exports.def = exports.dsl = void 0;
-exports.dsl = __importStar(require("./dsl"));
-exports.def = __importStar(require("./def"));
-exports.tag = __importStar(require("./tag"));
+exports.typecheck = exports.render = exports.html = exports.config = void 0;
+exports.config = __importStar(require("./config"));
+exports.html = __importStar(require("./html"));
+var render = function (t, conf, deep) {
+    if (deep === void 0) { deep = 0; }
+    if (typeof t === 'string') {
+        return t;
+    }
+    var childs = t.filter(function (v, i) { return i > 1; });
+    var content = childs.map(function (tag) { return "\n" + ('  '.repeat(deep + 1))
+        + (0, exports.render)(tag, conf, deep + 1); })
+        .join("");
+    return conf[t[0]]((t.length > 1 ? t[1] : {}), content);
+};
+exports.render = render;
+var typecheck = function (t, renderFuncs) { return t; };
+exports.typecheck = typecheck;

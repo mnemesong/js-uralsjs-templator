@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -23,8 +34,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.renderer = exports.literals = void 0;
-var a = __importStar(require("./abstracts"));
+exports.config = exports.literals = void 0;
+var c = __importStar(require("../config"));
 exports.literals = [
     'a',
     'abbr',
@@ -134,9 +145,11 @@ exports.literals = [
     'var',
     'video',
 ];
-exports.renderer = {};
-exports.literals.forEach(function (l) {
-    exports.renderer[l] = function (params, content) {
-        return "<".concat(l).concat(a.record.render(params), ">").concat(content, "</").concat(l, ">");
+var reducer = function (acc, el) {
+    var _a;
+    var a = function (params, content) {
+        return "<".concat(el).concat(c.record.render(params), ">").concat(content, "</").concat(el, ">");
     };
-});
+    return __assign(__assign({}, acc), (_a = {}, _a[el] = a, _a));
+};
+exports.config = exports.literals.reduce(reducer, {});

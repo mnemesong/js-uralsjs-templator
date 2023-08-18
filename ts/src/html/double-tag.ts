@@ -1,5 +1,4 @@
-import * as a from "./abstracts"
-import * as single from "./single-tag"
+import * as c from "../config"
 
 export const literals = [
     'a',
@@ -111,15 +110,16 @@ export const literals = [
     'video',
 ] as const
 
-type NeverIntersectionChecker = (typeof literals[number]) 
-    & (typeof single.literals[number])
+export type T = c.T<typeof literals[number]>
 
-export type T = a.render.T<typeof literals[number]>
-
-export const renderer: T = {
-} as T
-literals.forEach(l => {
-    renderer[l] = (params, content) => {
-        return `<${l}${a.record.render(params)}>${content}</${l}>`
+const reducer = (
+    acc: c.T<typeof literals[number]>, 
+    el: string
+): c.T<typeof literals[number]> => {
+    const a = (params: c.record.T, content: string) => {
+        return `<${el}${c.record.render(params)}>${content}</${el}>`
     }
-})
+    return {...acc, ...{[el]: a}}
+}
+
+export const config: T = literals.reduce(reducer, {} as T)

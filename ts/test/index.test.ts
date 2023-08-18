@@ -5,7 +5,7 @@ import * as eq from "deep-equal"
 
 describe("test variative cases", () => {
     it("test 1", () => {
-        const given = index.tag.typecheck(['html', {},
+        const given = index.typecheck(['html', {},
             ['div', {
                 'class': 'w-100',
                 'style': 'height: 50px;'
@@ -21,8 +21,8 @@ describe("test variative cases", () => {
                 }, "Submit"],
                 ['input'],
             ] 
-        ], index.def.renderer)
-        const result = index.tag.render(given, index.def.renderer)
+        ], index.html.config)
+        const result = index.render(given, index.html.config)
         const nominal = '<html>' 
             + '\n  <div class="w-100" style="height: 50px;">' 
             + '\n    <input name="test-input" val="test-val">' 
