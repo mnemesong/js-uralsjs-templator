@@ -1,12 +1,11 @@
 {
   "name": "uralsjs-templator",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "uralsjs html templator dsl",
   "main": "js/src/index.js",
   "scripts": {
     "build:compile": "tsc",
-    "build:test": "tsc && mocha ./js/test/**/*.js",
-    "build:browserify": "tsc && browserify ./js/src/html/app.js > resources/bundle.js"
+    "build:test": "tsc && mocha ./js/test/**/*.js"
   },
   "keywords": [],
   "author": "Anatoly Starodubtsev <tostar74@mail.ru>",
@@ -16,7 +15,6 @@
     "typescript": "^4.9.4",
     "@types/mocha": "^9.*",
     "@types/node": "^13.*",
-    "browserify": "^17.0.0",
     "deep-equal": "*"
   },
   "dependencies": {
