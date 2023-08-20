@@ -1,6 +1,6 @@
 {
   "name": "uralsjs-templator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "uralsjs html templator dsl",
   "main": "js/src/index.js",
   "scripts": {

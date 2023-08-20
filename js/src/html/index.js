@@ -34,9 +34,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.config = exports.singleTag = exports.doubleTag = void 0;
+exports.config = exports.helper = exports.singleTag = exports.doubleTag = void 0;
 exports.doubleTag = __importStar(require("./double-tag"));
 exports.singleTag = __importStar(require("./single-tag"));
+exports.helper = __importStar(require("./helper"));
 var singleTag = __importStar(require("./single-tag"));
 var doubleTag = __importStar(require("./double-tag"));
 exports.config = __assign(__assign({}, singleTag.config), doubleTag.config);
